@@ -18,9 +18,9 @@ public class ExamTest {
 		
 		HomePage page = PageFactory.initElements(driver, HomePage.class);
 	
-	page.addCategory("boufa2112");
+	page.addCategory("boufa211333");
 	page.clickOnAddCategoryButton();
-	page.fileDataSize();
+	page.verifyCategoryadded("boufa211333");
 }
 }
 

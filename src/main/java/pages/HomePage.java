@@ -13,6 +13,7 @@ import org.openqa.selenium.support.How;
 
 public class HomePage {
 
+		
 	
 	WebDriver driver;
 	public HomePage (WebDriver driver) {
@@ -60,15 +61,27 @@ public void addCategory (String category) {
 		
 	}
 	
-	public void fileDataSize() {
+	public String GetLastElementText() {
 		ArrayList<WebElement> fileData = new ArrayList<WebElement>();
 		fileData=CategoryListData();
 		System.out.println(fileData.size());
-		System.out.println(fileData.get(fileData.size()-1).getText());
+		String LastElementText=fileData.get(fileData.size()-1).getText();
+		return LastElementText;
+	}
+	
+	public void verifyCategoryadded(String category) {
+		
+		if (category.equals(GetLastElementText())) {
+			System.out.println("Category Added Succesfully");
+		}else {
+			System.out.println("Category not added");
+		}
 	}
 	
 	
-	public ArrayList<WebElement> CheckBoxListData() {
+	
+	
+	public ArrayList<WebElement> checkBoxListData() {
 		
 		ArrayList<WebElement> fileData = new ArrayList<WebElement>();
 		int i =2;
@@ -87,7 +100,7 @@ public void addCategory (String category) {
 	public void checkBoxVerification() {
 		
 		ArrayList<WebElement> fileData = new ArrayList<WebElement>();
-		fileData=CheckBoxListData();
+		fileData=checkBoxListData();
 		
 		for(int j=0;j<fileData.size();j++) {
 				fileData.get(j).isDisplayed();
@@ -109,7 +122,7 @@ public void addCategory (String category) {
 	
 	public void SelectCheckBox (int checkBoxLine) {
 		ArrayList<WebElement> fileData = new ArrayList<WebElement>();
-		fileData=CheckBoxListData();
+		fileData=checkBoxListData();
 		if (checkBoxLine<fileData.size()) {
 			
 			fileData.get(checkBoxLine).click();
@@ -126,7 +139,7 @@ public void addCategory (String category) {
 	public void verifyThatCheckBoxIsRemoved (int checkBoxLine) {
 		
 		ArrayList<WebElement> fileData = new ArrayList<WebElement>();
-		fileData=CheckBoxListData();
+		fileData=checkBoxListData();
 		
 		
    
@@ -140,7 +153,7 @@ public void addCategory (String category) {
 	}
 	public void verifyNoCheckboxisDisplayed() {
 		ArrayList<WebElement> fileData = new ArrayList<WebElement>();
-		fileData=CheckBoxListData();
+		fileData=checkBoxListData();
 		if (fileData.size()==0) {
 		System.out.println("No check box is displayed");
 		}else {
